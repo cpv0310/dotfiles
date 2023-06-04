@@ -45,19 +45,31 @@ export PATH="/usr/local/bin:$PATH"
 
 ### Add custom commands without creating a new fork
 
-If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
+### Customizing
 
-My `~/.extra` looks something like this:
+Save env vars, etc in a `.extra` file, that looks something like
+this:
 
 ```bash
-# Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-GIT_AUTHOR_NAME="Mathias Bynens"
+###
+### Git credentials
+###
+
+GIT_AUTHOR_NAME="Your Name"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="mathias@mailinator.com"
+GIT_AUTHOR_EMAIL="email@you.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
+GH_USER="nickname"
+git config --global github.user "$GH_USER"
+
+###
+### Gmail credentials for mutt
+###
+export GMAIL=email@you.com
+export GMAIL_NAME="Your Name"
+export GMAIL_FROM=from-email@you.com
 ```
 
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/mathiasbynens/dotfiles/fork) instead, though.
